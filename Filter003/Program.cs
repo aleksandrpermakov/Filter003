@@ -11,9 +11,19 @@ namespace Filter003
         static void Main(string[] args)
         {
             MyFilter summ = new MyFilter();
-            int[] arr = { -20, -5, 6, 15, 10 };
-            summ.AmountOfArray(arr);
-
+            
+           string fileName = FSWorker.ReadAllFile(args[0]); 
+            List<int> arr = new List<int>();
+            foreach (var item in fileName.Split(' '))
+            {
+                int i = 0;
+                if(int.TryParse(item, out i))
+                {
+                    arr.Add(i);
+                }
+            }
+           
+            summ.AmountOfArray(arr.ToArray());
         }
     }
 }
