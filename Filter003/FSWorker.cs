@@ -13,6 +13,11 @@ namespace Filter003
         {
             return Directory.GetCurrentDirectory();
         }
+        static public string GetPathMyDocuments() //возвращает путь "мои документы"
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            return path;
+        }
 
         static public List<string> ListOfFiles(string _path) // поиск в каталоге и подкаталогах название всех файлов txt
         {
@@ -40,6 +45,19 @@ namespace Filter003
             }
 
             return result;
+        }
+        static public void WriteToFile(string path, string content)
+        {
+            try
+            {
+                StreamWriter sr = new StreamWriter(path,true);
+                sr.Write(content);
+                sr.Close();
+            }
+            catch 
+            {
+                string empty_ = "<empty>";
+            }
         }
     }
 }
